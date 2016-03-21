@@ -57,9 +57,9 @@ Once a user has gone through the 23andMe module, the app will return an authoriz
    
 ### 3. Update ResearchKit code
    
-   See the "OtherEdits.txt" file for a
+   See the "OtherEdits.txt" file for a summary of the required modifications.
    
-    **Researchkit.h**
+   **Researchkit.h**
    Don't forget that when you add the following files to your project, they must have target membership set to "public"
    ```objc
    #import <ResearchKit/ORKTwentyThreeAndMeDefines.h>
@@ -138,8 +138,8 @@ Once a user has gone through the 23andMe module, the app will return an authoriz
                                                                                                                                                       baseURLOverride:nil];
    ```
    
-   **Parameters**
-   
+####   Parameters:
+
    **allowedUserMode**: Either ```ORKTwentyThreeAndMeAllowedUserModeExistingAndNew``` or ```ORKTwentyThreeAndMeAllowedUserModeExistingOnly```.
    
    **studyDependency**: Either ```ORKTwentyThreeAndMeStudyDependencyRequired``` or ```ORKTwentyThreeAndMeStudyDependencyOptional```.
@@ -158,7 +158,7 @@ Once a user has gone through the 23andMe module, the app will return an authoriz
    
    **baseURLOverride**: Either ```nil``` or a URL to ovveride the default 23andMe API URL.
    
-   Set the delegate and present the 23andMe view controller:
+####   Set the delegate and present the 23andMe view controller:
    ```objc
    ttamTaskVC.twentyThreeAndMeConnectDelegate = self;
    
@@ -172,6 +172,7 @@ Once a user has gone through the 23andMe module, the app will return an authoriz
                                             error:(nullable NSError *)error
    ```
    The ```results``` dictionary contains:
+   
    **completionType**: If the user successfully auth'd (and, for new 23andMe users, created an account) this will be set to ```success```. Otherwise, this will be set to ```cancelled```.
    
    **authToken**: 23andMe Auth Token for the user's 23andMe profile. Only set if ```completionType == success```.
