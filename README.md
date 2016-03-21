@@ -124,7 +124,22 @@ Once a user has gone through the 23andMe module, the app will return an authoriz
    @interface UIViewController () <ORKTwentyThreeAndMeConnectTaskViewControllerDelegate>
    ```
    Create the 23andMe task's view controller with the following method:
-   #### Parameters
+   ```objc
+   ORKTwentyThreeAndMeConnectTaskViewController *ttamTaskVC = [ORKTwentyThreeAndMeConnectTaskViewController twentyThreeAndMeTaskViewControllerWithIdentifier:@"connectWithTTAM"
+                                                                                                                                                      allowedUserMode:ORKTwentyThreeAndMeAllowedUserModeExistingAndNew
+                                                                                                                                                      studyDependency:ORKTwentyThreeAndMeStudyDependencyRequired
+                                                                                                                                                         authClientId:@"client_id"
+                                                                                                                                                     authClientSecret:@"client_secret"
+                                                                                                                                                        authScopes:@"basic genomes"
+                                                                        
+                                                                                                                                            investigatorDisplayName:@"name"
+                                                                                                                                                     studyDisplayName:@"study_name"
+                                                                                                                                                    studyContactEmail:@"my_email@email.com"
+                                                                                                                                                      baseURLOverride:nil];
+   ```
+   
+   **Parameters**
+   
    **allowedUserMode**: Either ```ORKTwentyThreeAndMeAllowedUserModeExistingAndNew``` or ```ORKTwentyThreeAndMeAllowedUserModeExistingOnly```.
    
    **studyDependency**: Either ```ORKTwentyThreeAndMeStudyDependencyRequired``` or ```ORKTwentyThreeAndMeStudyDependencyOptional```.
@@ -142,22 +157,6 @@ Once a user has gone through the 23andMe module, the app will return an authoriz
    **studyContactEmail**: User-facing contact email address.
    
    **baseURLOverride**: Either ```nil``` or a URL to ovveride the default 23andMe API URL.
-   
-   ```objc
-   ORKTwentyThreeAndMeConnectTaskViewController *ttamTaskVC = [ORKTwentyThreeAndMeConnectTaskViewController twentyThreeAndMeTaskViewControllerWithIdentifier:@"connectWithTTAM"
-                                                                                                                                                      allowedUserMode:ORKTwentyThreeAndMeAllowedUserModeExistingAndNew
-                                                                                                                                                      studyDependency:ORKTwentyThreeAndMeStudyDependencyRequired
-                                                                                                                                                         authClientId:@"client_id"
-                                                                                                                                                     authClientSecret:@"client_secret"
-                                                                                                                                                        authScopes:@"basic genomes"
-                                                                        
-                                                                                                                                            investigatorDisplayName:@"name"
-                                                                                                                                                     studyDisplayName:@"study_name"
-                                                                                                                                                    studyContactEmail:@"my_email@email.com"
-                                                                                                                                                      baseURLOverride:nil];
-   ```
-   
-   
    
    Set the delegate and present the 23andMe view controller:
    ```objc
