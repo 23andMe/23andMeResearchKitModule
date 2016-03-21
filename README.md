@@ -43,11 +43,11 @@ Once a user has gone through the 23andMe module, the app will return an authoriz
 - See the [genotypes] endpoint documentation for retreiving data for select genotypes
 
 ## Integrating the 23andMe Module
-1. Add the ReserchKit framework to your app
+### 1. Add the ReserchKit framework to your app
  
    Follow the instructions posted at the [ResearchKit repo].
 
-2. Add the 23andMe module to your app's project
+### 2. Add the 23andMe module to your app's project
  
    Clone the 23andMe module:
    ```bash
@@ -55,10 +55,10 @@ Once a user has gone through the 23andMe module, the app will return an authoriz
    ```
    Copy the module inside your ResearchKit project. Copy the "TwentyThreeAndMe" into the ResearchKit project inside of XCode.
    
-3. Update ResearchKit code
+### 3. Update ResearchKit code
    
    See the "OtherEdits.txt" file for a
-
+   
     **Researchkit.h**
    Don't forget that when you add the following files to your project, they must have target membership set to "public"
    ```objc
@@ -111,12 +111,80 @@ Once a user has gone through the 23andMe module, the app will return an authoriz
    "TWENTYTHREEANDME_FAILURE_TRY_AGAIN_BUTTON" = "Try again";
    "TWENTYTHREEANDME_FAILURE_DECLINE_BUTTON" = "Decline";
    ```
-4. Add image assets
+### 4. Add image assets
    
    The 23andMe module includes a series of assets used to incorporate 23andMe's look and feel. In order to include those in your app, create a "TwentyThreeAndMe" folder inside of the "Artwork.xcassets" item in your project's copy of ResearchKit. Then, copy the cotents of the /Assets folder into the folder you've just creted.
 
-5. Create a Task
+### 5. Present the 23andMe Connect Task
+   
+   In the view controller where you want to present the connect to 23andMe task and receive a user's permission to access her data, include the ResearchKit libraries and set a delegate to receive the task's response:
+   ```objc
+   #import <ResearchKit/ResearchKit.h>
 
+   @interface UIViewController () <ORKTwentyThreeAndMeConnectTaskViewControllerDelegate>
+   ```
+   Create the 23andMe task's view controller with the following method:
+   #### Parameters
+   **allowedUserMode**: Either ```ORKTwentyThreeAndMeAllowedUserModeExistingAndNew``` or ```ORKTwentyThreeAndMeAllowedUserModeExistingOnly```.
+   
+   **studyDependency**: Either ```ORKTwentyThreeAndMeStudyDependencyRequired``` or ```ORKTwentyThreeAndMeStudyDependencyOptional```.
+   
+   **authClientId**: 23andMe API OAuth client ID
+   
+   **authClientSecret**: 23andMe API OAuth client secret
+   
+   **authScopes**: Space-seperated list of scopes to request from the 23andMe API. See the list of [scopes] for details on what scopes to request.
+   
+   **investigatorDisplayName**: User-facing investigator name.
+   
+   **studyDisplayName**: User-facing study name.
+   
+   **studyContactEmail**: User-facing contact email address.
+   
+   **baseURLOverride**: Either ```nil``` or a URL to ovveride the default 23andMe API URL.
+   
+   ```objc
+   ORKTwentyThreeAndMeConnectTaskViewController *ttamTaskVC = [ORKTwentyThreeAndMeConnectTaskViewController twentyThreeAndMeTaskViewControllerWithIdentifier:@"connectWithTTAM"
+                                                                                                                                                      allowedUserMode:ORKTwentyThreeAndMeAllowedUserModeExistingAndNew
+                                                                                                                                                      studyDependency:ORKTwentyThreeAndMeStudyDependencyRequired
+                                                                                                                                                         authClientId:@"client_id"
+                                                                                                                                                     authClientSecret:@"client_secret"
+                                                                                                                                                        authScopes:@"basic genomes"
+                                                                        
+                                                                                                                                            investigatorDisplayName:@"name"
+                                                                                                                                                     studyDisplayName:@"study_name"
+                                                                                                                                                    studyContactEmail:@"my_email@email.com"
+                                                                                                                                                      baseURLOverride:nil];
+   ```
+   
+   
+   
+   Set the delegate and present the 23andMe view controller:
+   ```objc
+   ttamTaskVC.twentyThreeAndMeConnectDelegate = self;
+   
+   [self presentViewController:ttamTaskVC animated:NO completion:nil];
+   ```
+### 6. Implement the delegate method to receive a response
+   
+   ```objc
+   - (void)twentyThreeAndMeConnectTaskViewController:(ORKTwentyThreeAndMeConnectTaskViewController *)twentyThreeAndMeConnectTaskViewController
+                             didFinishWithResults:(NSDictionary *)results
+                                            error:(nullable NSError *)error
+   ```
+   The ```results``` dictionary contains:
+   **completionType**: If the user successfully auth'd (and, for new 23andMe users, created an account) this will be set to ```success```. Otherwise, this will be set to ```cancelled```.
+   
+   **authToken**: 23andMe Auth Token for the user's 23andMe profile. Only set if ```completionType == success```.
+   
+   **refreshToken**: 23andMe Refresh Token for the user's 23andMe profile. Only set if ```completionType == success```. 
+   
+   On access and refresh tokens:
+>Access tokens expire after 1 day. If you need to access a user's data past that, you can request another token using the last ```refresh_token``` that you were issued. Using the refresh token means you don't have to send the user through the "Accept" screen all over again. Requesting a new token set will invalidate your old ```refresh_token```. Be sure to specify the full scope when requesting a new access token.
+
+#### 7. Use the 23andMe API to retreive user data
+   Once you've retreived an access token, you can use the API to access the information that the user agreed to share with you as it is available. _Access tokens retreived via the 23andMe ResearchKit module are only valid for individual profiles, so be sure to keep track of the profile ID that's associated with the token._
+   
 ## Questions?
 **Questions about 23andMe, the 23andMe API, or interested in setting up a project with us?** Contact us at researchkit@23andme.com.
 
@@ -160,3 +228,4 @@ Copyright (c) 2016, 23andMe, Inc. All rights reserved.
 [here]: https://api.23andme.com/
 [upgrade]: https://api.23andme.com/overview/
 [ResearchKit repo]: https://github.com/researchkit/researchkit#adding-the-researchkit-framework-to-your-app
+[scopes]: https://api.23andme.com/docs/authentication/#scopes
