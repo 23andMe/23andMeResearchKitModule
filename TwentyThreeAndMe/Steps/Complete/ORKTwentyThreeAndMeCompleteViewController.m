@@ -104,8 +104,14 @@
     if( connectResult.authToken &&
         connectResult.refreshToken ) {
         [self hideFailureViewController];
-        //[self showSuccessExistingViewController];
-        [self showSuccessNewViewController];
+        if( connectResult.newUserFlow )
+        {
+            [self showSuccessNewViewController];
+        }
+        else
+        {
+            [self showSuccessExistingViewController];
+        }
     }
     else {
         [self hideSuccessExistingViewController];
