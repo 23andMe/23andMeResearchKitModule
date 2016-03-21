@@ -6,7 +6,7 @@ Bring genetic data to your ResearchKit-enabled research app with 23andMe.
 **Interested? Contact us at researchkit@23andme.com**
 
 ## Introduction
-Seamlessly incorporate genetic data collection into your ResearchKit-enabled app. With 23andMe's ResearchKit module you can use 23andMe as a source for collecting genetic data from both existing 23andMe customers as well as other individuals who you'd like to send sign up for 23andMe.
+Seamlessly incorporate genetic data collection into your ResearchKit-enabled app. With 23andMe's ResearchKit module you can use 23andMe as a source for collecting genetic data from both existing 23andMe customers as well as other individuals who you'd like to sign up for 23andMe.
 
 23andMe's ResearchKit module makes it easy to either:
 - Request that an existing 23andMe customers agree to share their genetic data with your app
