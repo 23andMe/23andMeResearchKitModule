@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>23andMe ResearchKit Module by 23andMe</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">23andMe ResearchKit Module</h1>
+      <h2 class="project-tagline">Bring genetic data to your ResearchKit-enabled research app with 23andMe.</h2>
+      <a href="https://github.com/23andMe/23andMeResearchKitModule" class="btn">View on GitHub</a>
+      <a href="https://github.com/23andMe/23andMeResearchKitModule/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/23andMe/23andMeResearchKitModule/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <p><img src="https://23andme.https.internapcdn.net/res/img/youpub/eMSIv5E4y1ilKTq6zq1MEQ_logo.svg" alt="23andMe logo" width="400" height="150"></p>
+
+<h1>
+<a id="23andme-researchkit-module" class="anchor" href="#23andme-researchkit-module" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>23andMe ResearchKit Module</h1>
+
+<p>Bring genetic data to your ResearchKit-enabled research app with 23andMe.</p>
+
+<p><strong>Interested? Contact us at <a href="mailto:researchkit@23andme.com">researchkit@23andme.com</a></strong></p>
+
+<h2>
+<a id="introduction" class="anchor" href="#introduction" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Introduction</h2>
+
+<p>Seamlessly incorporate genetic data collection into your ResearchKit-enabled app. With 23andMe's ResearchKit module you can use 23andMe as a source for collecting genetic data from both existing 23andMe customers as well as other individuals who you'd like to sign up for 23andMe.</p>
+
+<p>23andMe's ResearchKit module makes it easy to either:</p>
+
+<ul>
+<li>Request that an existing 23andMe customers agree to share their genetic data with your app</li>
+<li>Have a non-23andMe customer create a 23andMe account and profile, and agree to share their genetic data with your app, when available.</li>
+</ul>
+
+<h3>
+<a id="supported-configurations" class="anchor" href="#supported-configurations" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Supported Configurations</h3>
+
+<h4>
+<a id="23andme-customer-types" class="anchor" href="#23andme-customer-types" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>23andMe Customer Types</h4>
+
+<ul>
+<li>
+<p>Existing 23andMe customers only</p>
+
+<p>This configuration allows existing 23andMe customers to share their genotype data with your research study.</p>
+</li>
+<li>
+<p>Existing and new 23andMe customers</p>
+
+<p>Note that this configuration requires that a researcher has a purchase agreement in place to sponsor the purchase of a 23andMe kit for participants the researcher has deemed eligible.</p>
+</li>
+</ul>
+
+<h4>
+<a id="contribution-of-data" class="anchor" href="#contribution-of-data" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Contribution of Data</h4>
+
+<ul>
+<li>Contributing genetic data required</li>
+<li>Contributing genetic data optional</li>
+</ul>
+
+<h2>
+<a id="getting-started" class="anchor" href="#getting-started" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Getting Started</h2>
+
+<h3>
+<a id="requirements" class="anchor" href="#requirements" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Requirements</h3>
+
+<ul>
+<li>ResearchKit 1.3.0 (has not been tested against other versions)</li>
+<li>iOS Base SDK 8.0+</li>
+</ul>
+
+<h3>
+<a id="contact-23andme-for-development-environment-access" class="anchor" href="#contact-23andme-for-development-environment-access" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Contact 23andMe for development environment access</h3>
+
+<p>23andMe has created a development environment for researchers looking to include the 23andMe module in their app. Send an email to <a href="mailto:researchkit@23andme.com">researchkit@23andme.com</a> for more information on accessing the development environment.</p>
+
+<p>If your app will only accept data from existing 23andMe customers, then you may not need access to the development environment. You can create a development API account <a href="https://api.23andme.com/">here</a>.</p>
+
+<p>Note that development accounts are limited to 20 users. <strong>You will need to request an API <a href="https://api.23andme.com/overview/">upgrade</a> before you release your app.</strong></p>
+
+<h3>
+<a id="authenticating-with-the-23andme-api" class="anchor" href="#authenticating-with-the-23andme-api" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Authenticating with the 23andMe API</h3>
+
+<p>Once a user has gone through the 23andMe module, the app will return an authorization code that you can exchange for auth &amp; refresh tokens using the 23andMe API. See the <a href="https://api.23andme.com/docs/authentication/">documentation</a> for additional details.</p>
+
+<h3>
+<a id="retrieving-genetic-data-via-the-api" class="anchor" href="#retrieving-genetic-data-via-the-api" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Retrieving genetic data via the API</h3>
+
+<ul>
+<li>See the <a href="https://api.23andme.com/docs/reference/#genomes">genomes</a> endpoint documentation for downloading genomewide data</li>
+<li>See the <a href="https://api.23andme.com/docs/reference/#genotypes">genotypes</a> endpoint documentation for retrieving data for selected SNPs</li>
+</ul>
+
+<h2>
+<a id="integrating-the-23andme-module" class="anchor" href="#integrating-the-23andme-module" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Integrating the 23andMe Module</h2>
+
+<h3>
+<a id="1-add-the-researchkit-framework-to-your-app" class="anchor" href="#1-add-the-researchkit-framework-to-your-app" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>1. Add the ResearchKit framework to your app</h3>
+
+<p>Follow the instructions posted at the <a href="https://github.com/researchkit/researchkit#adding-the-researchkit-framework-to-your-app">ResearchKit repo</a>.</p>
+
+<h3>
+<a id="2-add-the-23andme-module-to-your-apps-project" class="anchor" href="#2-add-the-23andme-module-to-your-apps-project" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2. Add the 23andMe module to your app's project</h3>
+
+<p>Clone the 23andMe module:</p>
+
+<div class="highlight highlight-source-shell"><pre>   git clone https://github.com/23andMe/23andMeResearchKitModule.git</pre></div>
+
+<p>Copy the module inside your ResearchKit project. Copy the "TwentyThreeAndMe" into the ResearchKit project inside of XCode.</p>
+
+<h3>
+<a id="3-update-researchkit-code" class="anchor" href="#3-update-researchkit-code" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>3. Update ResearchKit code</h3>
+
+<p>See the "OtherEdits.txt" file for a summary of the required modifications.</p>
+
+<p><strong>Researchkit.h</strong>
+   Don't forget that when you add the following files to your project, they must have target membership set to "public"</p>
+
+<div class="highlight highlight-source-objc"><pre>   #<span class="pl-k">import</span> <span class="pl-s"><span class="pl-pds">&lt;</span>ResearchKit/ORKTwentyThreeAndMeDefines.h<span class="pl-pds">&gt;</span></span>
+   #<span class="pl-k">import</span> <span class="pl-s"><span class="pl-pds">&lt;</span>ResearchKit/ORKTwentyThreeAndMeConnectTaskViewController.h<span class="pl-pds">&gt;</span></span></pre></div>
+
+<p><strong>Researchkit.private</strong>
+   Don't forget that when you add the following files to your project, they must have target membership set to "private"</p>
+
+<div class="highlight highlight-source-objc"><pre>   #<span class="pl-k">import</span> <span class="pl-s"><span class="pl-pds">&lt;</span>ResearchKit/ORKOrderedTask+TwentyThreeAndMe.h<span class="pl-pds">&gt;</span></span>
+   #<span class="pl-k">import</span> <span class="pl-s"><span class="pl-pds">&lt;</span>ResearchKit/ORKResult+TwentyThreeAndMe.h<span class="pl-pds">&gt;</span></span></pre></div>
+
+<p><strong>Researchkit.strings - English</strong></p>
+
+<div class="highlight highlight-source-objc"><pre>   <span class="pl-c">/* 23andMe connect task. */</span>
+   <span class="pl-s"><span class="pl-pds">"</span>TWENTYTHREEANDME_DECLINE_PROMPT_DETAILS<span class="pl-pds">"</span></span> = <span class="pl-s"><span class="pl-pds">"</span>Are you sure you want to decline adding your genetic data to <span class="pl-ii">%</span>@? Declining may impact your eligibility for this study<span class="pl-pds">"</span></span>;
+   <span class="pl-s"><span class="pl-pds">"</span>TWENTYTHREEANDME_DECLINE_PROMPT_ACTION_DECLINE<span class="pl-pds">"</span></span> = <span class="pl-s"><span class="pl-pds">"</span>Decline<span class="pl-pds">"</span></span>;
+   <span class="pl-s"><span class="pl-pds">"</span>TWENTYTHREEANDME_DECLINE_PROMPT_ACTION_CANCEL<span class="pl-pds">"</span></span> = <span class="pl-s"><span class="pl-pds">"</span>Cancel<span class="pl-pds">"</span></span>;
+
+   <span class="pl-s"><span class="pl-pds">"</span>TWENTYTHREEANDME_INTRO_MAIN_SHARE<span class="pl-pds">"</span></span> = <span class="pl-s"><span class="pl-pds">"</span>Add Genetic Data<span class="pl-pds">"</span></span>;
+   <span class="pl-s"><span class="pl-pds">"</span>TWENTYTHREEANDME_INTRO_MAIN_DECLINE<span class="pl-pds">"</span></span> = <span class="pl-s"><span class="pl-pds">"</span>Decline<span class="pl-pds">"</span></span>;
+
+   <span class="pl-s"><span class="pl-pds">"</span>TWENTYTHREEANDME_INTRO_1_DESCRIPTION<span class="pl-pds">"</span></span> = <span class="pl-s"><span class="pl-pds">"</span><span class="pl-ii">%</span>@ has selected 23andMe to collect genetic data for the <span class="pl-ii">%</span>@ study<span class="pl-pds">"</span></span>;
+
+   <span class="pl-s"><span class="pl-pds">"</span>TWENTYTHREEANDME_INTRO_2_TITLE<span class="pl-pds">"</span></span> = <span class="pl-s"><span class="pl-pds">"</span>About this study<span class="pl-pds">"</span></span>;
+   <span class="pl-s"><span class="pl-pds">"</span>TWENTYTHREEANDME_INTRO_2_ABOUT_REQUIRED<span class="pl-pds">"</span></span> = <span class="pl-s"><span class="pl-pds">"</span>Contributing your genetic data is required for participation in the <span class="pl-ii">%</span>@ study. You will need to authorize 23andMe to share that data with <span class="pl-ii">%</span>@<span class="pl-pds">"</span></span>;
+   <span class="pl-s"><span class="pl-pds">"</span>TWENTYTHREEANDME_INTRO_2_ABOUT_OPTIONAL<span class="pl-pds">"</span></span> = <span class="pl-s"><span class="pl-pds">"</span>In order to contribute your genetic data to the <span class="pl-ii">%</span>@ study, you will need to authorize 23andMe to share that data with <span class="pl-ii">%</span>@<span class="pl-pds">"</span></span>;
+   <span class="pl-s"><span class="pl-pds">"</span>TWENTYTHREEANDME_INTRO_2_ELIGIBILITY_HEADER<span class="pl-pds">"</span></span> = <span class="pl-s"><span class="pl-pds">"</span>Eligibility<span class="pl-pds">"</span></span>;
+   <span class="pl-s"><span class="pl-pds">"</span>TWENTYTHREEANDME_INTRO_2_ELIGIBILITY_EXISTING<span class="pl-pds">"</span></span> = <span class="pl-s"><span class="pl-pds">"</span>• Existing 23andMe users<span class="pl-pds">"</span></span>;
+   <span class="pl-s"><span class="pl-pds">"</span>TWENTYTHREEANDME_INTRO_2_ELIGIBILITY_NEW<span class="pl-pds">"</span></span> = <span class="pl-s"><span class="pl-pds">"</span>• Individuals who agree to receive the 23andMe Personal Genome Service at no cost<span class="pl-pds">"</span></span>;
+
+   <span class="pl-s"><span class="pl-pds">"</span>TWENTYTHREEANDME_INTRO_3_TITLE<span class="pl-pds">"</span></span> = <span class="pl-s"><span class="pl-pds">"</span>About 23andMe<span class="pl-pds">"</span></span>;
+   <span class="pl-s"><span class="pl-pds">"</span>TWENTYTHREEANDME_INTRO_3_MISSION<span class="pl-pds">"</span></span> = <span class="pl-s"><span class="pl-pds">"</span>23andMe is a genetic service available directly to U.S. customers that includes reports that meet FDA standards for being scientifically and clinically valid. 23andMe helps people understand what’s in their DNA. The 23andMe Personal Genome Service includes more than 60 personalized genetic health, trait and ancestry reports.<span class="pl-pds">"</span></span>;
+   <span class="pl-s"><span class="pl-pds">"</span>TWENTYTHREEANDME_INTRO_3_LEARN_MORE<span class="pl-pds">"</span></span> = <span class="pl-s"><span class="pl-pds">"</span>Learn more about 23andMe<span class="pl-pds">"</span></span>;
+   <span class="pl-s"><span class="pl-pds">"</span>TWENTYTHREEANDME_INTRO_3_QUESTIONS<span class="pl-pds">"</span></span> = <span class="pl-s"><span class="pl-pds">"</span>Questions?<span class="pl-pds">"</span></span>;
+   <span class="pl-s"><span class="pl-pds">"</span>TWENTYTHREEANDME_INTRO_3_CONTACT<span class="pl-pds">"</span></span> = <span class="pl-s"><span class="pl-pds">"</span>Contact <span class="pl-ii">%</span>@<span class="pl-pds">"</span></span>;
+
+   <span class="pl-s"><span class="pl-pds">"</span>TWENTYTHREEANDME_COMPLETE_TITLE<span class="pl-pds">"</span></span> = <span class="pl-s"><span class="pl-pds">"</span>Congratulations<span class="pl-pds">"</span></span>;
+   <span class="pl-s"><span class="pl-pds">"</span>TWENTYTHREEANDME_COMPLETE_DONE_BUTTON<span class="pl-pds">"</span></span> = <span class="pl-s"><span class="pl-pds">"</span>Done<span class="pl-pds">"</span></span>;
+   <span class="pl-s"><span class="pl-pds">"</span>TWENTYTHREEANDME_COMPLETE_EXISTING_DETAIL<span class="pl-pds">"</span></span> = <span class="pl-s"><span class="pl-pds">"</span>Congratulations, you’ve successfully enrolled in <span class="pl-ii">%</span>@. <span class="pl-ii">%</span>@ is now authorized to access your genetic data.<span class="pl-pds">"</span></span>;
+   <span class="pl-s"><span class="pl-pds">"</span>TWENTYTHREEANDME_COMPLETE_NEW_DETAIL<span class="pl-pds">"</span></span> = <span class="pl-s"><span class="pl-pds">"</span>Congratulations, you’ve successfully enrolled in <span class="pl-ii">%</span>@. <span class="pl-ii">%</span>@ is now authorized to access your genetic data.<span class="pl-pds">"</span></span>;
+   <span class="pl-s"><span class="pl-pds">"</span>TWENTYTHREEANDME_COMPLETE_NEW_NEXT_STEP<span class="pl-pds">"</span></span> = <span class="pl-s"><span class="pl-pds">"</span>Next steps<span class="pl-pds">"</span></span>;
+   <span class="pl-s"><span class="pl-pds">"</span>TWENTYTHREEANDME_COMPLETE_NEW_NEXT_STEP_DETAIL<span class="pl-pds">"</span></span> = <span class="pl-s"><span class="pl-pds">"</span>23andMe will mail you a saliva collection kit. Simply follow the instructions included with the kit, mail the sample back, and we will notify you when your reports are ready.<span class="pl-pds">"</span></span>;
+
+   <span class="pl-s"><span class="pl-pds">"</span>TWENTYTHREEANDME_FAILURE_TITLE<span class="pl-pds">"</span></span> = <span class="pl-s"><span class="pl-pds">"</span>Try again<span class="pl-pds">"</span></span>;
+   <span class="pl-s"><span class="pl-pds">"</span>TWENTYTHREEANDME_FAILURE_DESCRIPTION<span class="pl-pds">"</span></span> = <span class="pl-s"><span class="pl-pds">"</span>Sorry, we weren’t able to enroll you in the genetic component of <span class="pl-ii">%</span>@. Please try again, or contact <span class="pl-ii">%</span>@ if you have any questions.<span class="pl-pds">"</span></span>;
+   <span class="pl-s"><span class="pl-pds">"</span>TWENTYTHREEANDME_FAILURE_CONTACT<span class="pl-pds">"</span></span> = <span class="pl-s"><span class="pl-pds">"</span>Contact <span class="pl-ii">%</span>@<span class="pl-pds">"</span></span>;
+   <span class="pl-s"><span class="pl-pds">"</span>TWENTYTHREEANDME_FAILURE_TRY_AGAIN_BUTTON<span class="pl-pds">"</span></span> = <span class="pl-s"><span class="pl-pds">"</span>Try again<span class="pl-pds">"</span></span>;
+   <span class="pl-s"><span class="pl-pds">"</span>TWENTYTHREEANDME_FAILURE_DECLINE_BUTTON<span class="pl-pds">"</span></span> = <span class="pl-s"><span class="pl-pds">"</span>Decline<span class="pl-pds">"</span></span>;</pre></div>
+
+<h3>
+<a id="4-add-image-assets" class="anchor" href="#4-add-image-assets" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>4. Add image assets</h3>
+
+<p>The 23andMe module includes a series of assets used to incorporate 23andMe's look and feel. In order to include those in your app, create a "TwentyThreeAndMe" folder inside of the "Artwork.xcassets" item in your project's copy of ResearchKit. Then, copy the contents of the /Assets folder into the folder you've just created.</p>
+
+<h3>
+<a id="5-present-the-23andme-connect-task" class="anchor" href="#5-present-the-23andme-connect-task" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>5. Present the 23andMe Connect Task</h3>
+
+<p>In the view controller where you want to present the connect to 23andMe task and receive a user's permission to access her data, include the ResearchKit libraries and set a delegate to receive the task's response:</p>
+
+<div class="highlight highlight-source-objc"><pre>   #<span class="pl-k">import</span> <span class="pl-s"><span class="pl-pds">&lt;</span>ResearchKit/ResearchKit.h<span class="pl-pds">&gt;</span></span>
+
+   <span class="pl-k">@interface</span> <span class="pl-en">UIViewController</span> () &lt;ORKTwentyThreeAndMeConnectTaskViewControllerDelegate&gt;</pre></div>
+
+<p>Create the 23andMe task's view controller with the following method:</p>
+
+<div class="highlight highlight-source-objc"><pre>   ORKTwentyThreeAndMeConnectTaskViewController *ttamTaskVC =
+   [ORKTwentyThreeAndMeConnectTaskViewController <span class="pl-c1">twentyThreeAndMeTaskViewControllerWithIdentifier:</span><span class="pl-s"><span class="pl-pds">@"</span>connectWithTTAM<span class="pl-pds">"</span></span>
+      <span class="pl-c1">allowedUserMode:</span>ORKTwentyThreeAndMeAllowedUserModeExistingAndNew
+      <span class="pl-c1">studyDependency:</span>ORKTwentyThreeAndMeStudyDependencyRequired
+      <span class="pl-c1">authClientId:</span><span class="pl-s"><span class="pl-pds">@"</span>&lt;client_id&gt;<span class="pl-pds">"</span></span>
+      <span class="pl-c1">authClientSecret:</span><span class="pl-s"><span class="pl-pds">@"</span>&lt;client_secret&gt;<span class="pl-pds">"</span></span>
+      <span class="pl-c1">authScopes:</span><span class="pl-s"><span class="pl-pds">@"</span>basic genomes<span class="pl-pds">"</span></span>
+      <span class="pl-c1">investigatorDisplayName:</span><span class="pl-s"><span class="pl-pds">@"</span>name<span class="pl-pds">"</span></span>
+      <span class="pl-c1">studyDisplayName:</span><span class="pl-s"><span class="pl-pds">@"</span>study_name<span class="pl-pds">"</span></span>
+      <span class="pl-c1">studyContactEmail:</span><span class="pl-s"><span class="pl-pds">@"</span>my_email@email.com<span class="pl-pds">"</span></span>
+      <span class="pl-c1">baseURLOverride:</span><span class="pl-c1">nil</span>];</pre></div>
+
+<h4>
+<a id="parameters" class="anchor" href="#parameters" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Parameters:</h4>
+
+<p><strong>allowedUserMode</strong>: Either <code>ORKTwentyThreeAndMeAllowedUserModeExistingAndNew</code> or <code>ORKTwentyThreeAndMeAllowedUserModeExistingOnly</code>.</p>
+
+<p><strong>studyDependency</strong>: Either <code>ORKTwentyThreeAndMeStudyDependencyRequired</code> or <code>ORKTwentyThreeAndMeStudyDependencyOptional</code>.</p>
+
+<p><strong>authClientId</strong>: 23andMe API OAuth client ID</p>
+
+<p><strong>authClientSecret</strong>: 23andMe API OAuth client secret</p>
+
+<p><strong>authScopes</strong>: Space-seperated list of scopes to request from the 23andMe API. See the list of <a href="https://api.23andme.com/docs/authentication/#scopes">scopes</a> for details on what scopes to request.</p>
+
+<p><strong>investigatorDisplayName</strong>: User-facing investigator name.</p>
+
+<p><strong>studyDisplayName</strong>: User-facing study name.</p>
+
+<p><strong>studyContactEmail</strong>: User-facing contact email address.</p>
+
+<p><strong>baseURLOverride</strong>: Either <code>nil</code> or a URL to override the default 23andMe API URL. Use this override URL to access the sandbox environment. For access to the sandbox environment, contact us at <a href="mailto:researchkit@23andme.com">researchkit@23andme.com</a></p>
+
+<h4>
+<a id="set-the-delegate-and-present-the-23andme-view-controller" class="anchor" href="#set-the-delegate-and-present-the-23andme-view-controller" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Set the delegate and present the 23andMe view controller:</h4>
+
+<div class="highlight highlight-source-objc"><pre>   ttamTaskVC.twentyThreeAndMeConnectDelegate = self;
+
+   [<span class="pl-v">self</span> <span class="pl-c1">presentViewController:</span>ttamTaskVC <span class="pl-c1">animated:</span><span class="pl-c1">NO</span> <span class="pl-c1">completion:</span><span class="pl-c1">nil</span>];</pre></div>
+
+<h3>
+<a id="6-implement-the-delegate-method-to-receive-a-response" class="anchor" href="#6-implement-the-delegate-method-to-receive-a-response" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>6. Implement the delegate method to receive a response</h3>
+
+<div class="highlight highlight-source-objc"><pre>   - (<span class="pl-k">void</span>)twentyThreeAndMeConnectTaskViewController:(ORKTwentyThreeAndMeConnectTaskViewController *)twentyThreeAndMeConnectTaskViewController
+                             didFinishWithResults:(<span class="pl-c1">NSDictionary</span> *)results
+                                            error:(nullable <span class="pl-c1">NSError</span> *)error</pre></div>
+
+<p>The <code>results</code> dictionary contains:</p>
+
+<p><strong>completionType</strong>: If the user successfully auth'd (and, for new 23andMe users, created an account) this will be set to <code>success</code>. Otherwise, this will be set to <code>cancelled</code>.</p>
+
+<p><strong>authToken</strong>: 23andMe Auth Token for the user's 23andMe profile. Only set if <code>completionType == success</code>.</p>
+
+<p><strong>refreshToken</strong>: 23andMe Refresh Token for the user's 23andMe profile. Only set if <code>completionType == success</code>.</p>
+
+<p>On access and refresh tokens:</p>
+
+<blockquote>
+<p>Access tokens expire after 1 day. If you need to access a user's data past that, you can request another token using the last <code>refresh_token</code> that you were issued. Using the refresh token means you don't have to send the user through the "Accept" screen all over again. Requesting a new token set will invalidate your old <code>refresh_token</code>. Be sure to specify the full scope when requesting a new access token.</p>
+</blockquote>
+
+<h4>
+<a id="7-use-the-23andme-api-to-retrieve-user-data" class="anchor" href="#7-use-the-23andme-api-to-retrieve-user-data" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>7. Use the 23andMe API to retrieve user data</h4>
+
+<p>Once you've retrieved an access token, you can use the API to access the information that the user agreed to share with you as it is available. <em>Access tokens retrieved via the 23andMe ResearchKit module are only valid for individual profiles, so be sure to keep track of the profile ID that's associated with the token.</em></p>
+
+<h2>
+<a id="questions" class="anchor" href="#questions" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Questions?</h2>
+
+<p><strong>Questions about 23andMe, the 23andMe API, or interested in setting up a project with us?</strong> Contact us at <a href="mailto:researchkit@23andme.com">researchkit@23andme.com</a>.</p>
+
+<p><strong>See something in our code or documentation?</strong> Create an issue on GitHub and we'll take a look.</p>
+
+<h1>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h1>
+
+<p>The source in the <em>23andMeResearchKitModule</em> repository is made available under the following license unless another license is explicitly identified:</p>
+
+<pre><code>Copyright (c) 2016, 23andMe, Inc. All rights reserved.
+
+ Redistribution and use in source and binary forms, with or without modification,
+ are permitted provided that the following conditions are met:
+
+ 1.  Redistributions of source code must retain the above copyright notice, this
+ list of conditions and the following disclaimer.
+
+ 2.  Redistributions in binary form must reproduce the above copyright notice,
+ this list of conditions and the following disclaimer in the documentation and/or
+ other materials provided with the distribution.
+
+ 3.  Neither the name of the copyright holder(s) nor the names of any contributors
+ may be used to endorse or promote products derived from this software without
+ specific prior written permission. No license is granted to the trademarks of
+ the copyright holders even if such marks are included in this software.
+
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE
+ FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+ SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+ OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+</code></pre>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/23andMe/23andMeResearchKitModule">23andMe ResearchKit Module</a> is maintained by <a href="https://github.com/23andMe">23andMe</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
