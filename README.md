@@ -42,10 +42,10 @@ Once a user has gone through the 23andMe module, the app will return an authoriz
 
 ### Retrieving genetic data via the API
 - See the [genomes] endpoint documentation for downloading genomewide data
-- See the [genotypes] endpoint documentation for retrieving data for select genotypes
+- See the [genotypes] endpoint documentation for retrieving data for selected SNPs
 
 ## Integrating the 23andMe Module
-### 1. Add the ReserchKit framework to your app
+### 1. Add the ResearchKit framework to your app
 
    Follow the instructions posted at the [ResearchKit repo].
 
@@ -69,7 +69,7 @@ Once a user has gone through the 23andMe module, the app will return an authoriz
    ```
 
    **Researchkit.private**
-   Don't forget that when you add the following files to your project, they must have target membership set to "public"
+   Don't forget that when you add the following files to your project, they must have target membership set to "private"
    ```objc
    #import <ResearchKit/ORKOrderedTask+TwentyThreeAndMe.h>
    #import <ResearchKit/ORKResult+TwentyThreeAndMe.h>
@@ -78,7 +78,7 @@ Once a user has gone through the 23andMe module, the app will return an authoriz
    **Researchkit.strings - English**
    ```objc
    /* 23andMe connect task. */
-   "TWENTYTHREEANDME_DECLINE_PROMPT_DETAILS" = "Are you sure you want to decline adding your    genetic data to %@? Declining may impact your eligibility for this study";
+   "TWENTYTHREEANDME_DECLINE_PROMPT_DETAILS" = "Are you sure you want to decline adding your genetic data to %@? Declining may impact your eligibility for this study";
    "TWENTYTHREEANDME_DECLINE_PROMPT_ACTION_DECLINE" = "Decline";
    "TWENTYTHREEANDME_DECLINE_PROMPT_ACTION_CANCEL" = "Cancel";
 
@@ -131,8 +131,8 @@ Once a user has gone through the 23andMe module, the app will return an authoriz
    [ORKTwentyThreeAndMeConnectTaskViewController twentyThreeAndMeTaskViewControllerWithIdentifier:@"connectWithTTAM"
       allowedUserMode:ORKTwentyThreeAndMeAllowedUserModeExistingAndNew
       studyDependency:ORKTwentyThreeAndMeStudyDependencyRequired
-      authClientId:@"client_id"
-      authClientSecret:@"client_secret"
+      authClientId:@"<client_id>"
+      authClientSecret:@"<client_secret>"
       authScopes:@"basic genomes"
       investigatorDisplayName:@"name"
       studyDisplayName:@"study_name"
@@ -158,7 +158,7 @@ Once a user has gone through the 23andMe module, the app will return an authoriz
 
    **studyContactEmail**: User-facing contact email address.
 
-   **baseURLOverride**: Either ```nil``` or a URL to override the default 23andMe API URL.
+   **baseURLOverride**: Either ```nil``` or a URL to override the default 23andMe API URL. Use this override URL to access the sandbox environment. For access to the sandbox environment, contact us at researchkit@23andme.com
 
 ####   Set the delegate and present the 23andMe view controller:
    ```objc
