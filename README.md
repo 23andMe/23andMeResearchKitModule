@@ -126,17 +126,16 @@ Once a user has gone through the 23andMe module, the app will return an authoriz
    Create the 23andMe task's view controller with the following method:
    ```objc
    ORKTwentyThreeAndMeConnectTaskViewController *ttamTaskVC = 
-   [ORKTwentyThreeAndMeConnectTaskViewController 
-   twentyThreeAndMeTaskViewControllerWithIdentifier:@"connectWithTTAM"
-                                                                                                                                            allowedUserMode:ORKTwentyThreeAndMeAllowedUserModeExistingAndNew
-                                                                                                                                            studyDependency:ORKTwentyThreeAndMeStudyDependencyRequired
-                                                                                                                                            authClientId:@"client_id"
-                                                                                                                                            authClientSecret:@"client_secret"
-                                                                                                                                            authScopes:@"basic genomes"
-                                                                                                                                            investigatorDisplayName:@"name"
-                                                                                                                                            studyDisplayName:@"study_name"
-                                                                                                                                            studyContactEmail:@"my_email@email.com"
-                                                                                                                                            baseURLOverride:nil];
+   [ORKTwentyThreeAndMeConnectTaskViewController twentyThreeAndMeTaskViewControllerWithIdentifier:@"connectWithTTAM"
+      allowedUserMode:ORKTwentyThreeAndMeAllowedUserModeExistingAndNew
+      studyDependency:ORKTwentyThreeAndMeStudyDependencyRequired
+      authClientId:@"client_id"
+      authClientSecret:@"client_secret"
+      authScopes:@"basic genomes"
+      investigatorDisplayName:@"name"
+      studyDisplayName:@"study_name"
+      studyContactEmail:@"my_email@email.com"
+      baseURLOverride:nil];
    ```
    
 ####   Parameters:
