@@ -3,6 +3,8 @@
 # 23andMe ResearchKit Module
 Bring genetic data to your ResearchKit-enabled research app with 23andMe.
 
+**Interested? Contact us at researchkit@23andme.com**
+
 ## Introduction
 Seamlessly incorporate genetic data collection into your ResearchKit-enabled app. With 23andMe's ResearchKit module you can use 23andMe as a source for collecting genetic data from both existing 23andMe customers as well as other individuals who you'd like to send sign up for 23andMe.
 
@@ -17,7 +19,7 @@ Seamlessly incorporate genetic data collection into your ResearchKit-enabled app
    This configuration allows existing 23andMe customers to share their genotype data with your research study.
 - Existing and new 23andMe customers
 
-   Note that this configuration requres that a researcher has a purchase agreement in place to sponsor the purchase of a 23andMe kit for participants the researcher has deemed eligibile.
+   Note that this configuration requires that a researcher has a purchase agreement in place to sponsor the purchase of a 23andMe kit for participants the researcher has deemed eligible.
 
 #### Contribution of Data
 - Contributing genetic data required
@@ -38,41 +40,41 @@ Note that development accounts are limited to 20 users. **You will need to reque
 ### Authenticating with the 23andMe API
 Once a user has gone through the 23andMe module, the app will return an authorization code that you can exchange for auth & refresh tokens using the 23andMe API. See the [documentation] for additional details.
 
-### Retreiving genetic data via the API
+### Retrieving genetic data via the API
 - See the [genomes] endpoint documentation for downloading genomewide data
-- See the [genotypes] endpoint documentation for retreiving data for select genotypes
+- See the [genotypes] endpoint documentation for retrieving data for select genotypes
 
 ## Integrating the 23andMe Module
 ### 1. Add the ReserchKit framework to your app
- 
+
    Follow the instructions posted at the [ResearchKit repo].
 
 ### 2. Add the 23andMe module to your app's project
- 
+
    Clone the 23andMe module:
    ```bash
    git clone https://github.com/23andMe/23andMeResearchKitModule.git
    ```
    Copy the module inside your ResearchKit project. Copy the "TwentyThreeAndMe" into the ResearchKit project inside of XCode.
-   
+
 ### 3. Update ResearchKit code
-   
+
    See the "OtherEdits.txt" file for a summary of the required modifications.
-   
+
    **Researchkit.h**
    Don't forget that when you add the following files to your project, they must have target membership set to "public"
    ```objc
    #import <ResearchKit/ORKTwentyThreeAndMeDefines.h>
    #import <ResearchKit/ORKTwentyThreeAndMeConnectTaskViewController.h>
    ```
-   
+
    **Researchkit.private**
    Don't forget that when you add the following files to your project, they must have target membership set to "public"
    ```objc
    #import <ResearchKit/ORKOrderedTask+TwentyThreeAndMe.h>
    #import <ResearchKit/ORKResult+TwentyThreeAndMe.h>
    ```
-   
+
    **Researchkit.strings - English**
    ```objc
    /* 23andMe connect task. */
@@ -112,11 +114,11 @@ Once a user has gone through the 23andMe module, the app will return an authoriz
    "TWENTYTHREEANDME_FAILURE_DECLINE_BUTTON" = "Decline";
    ```
 ### 4. Add image assets
-   
-   The 23andMe module includes a series of assets used to incorporate 23andMe's look and feel. In order to include those in your app, create a "TwentyThreeAndMe" folder inside of the "Artwork.xcassets" item in your project's copy of ResearchKit. Then, copy the cotents of the /Assets folder into the folder you've just creted.
+
+   The 23andMe module includes a series of assets used to incorporate 23andMe's look and feel. In order to include those in your app, create a "TwentyThreeAndMe" folder inside of the "Artwork.xcassets" item in your project's copy of ResearchKit. Then, copy the contents of the /Assets folder into the folder you've just created.
 
 ### 5. Present the 23andMe Connect Task
-   
+
    In the view controller where you want to present the connect to 23andMe task and receive a user's permission to access her data, include the ResearchKit libraries and set a delegate to receive the task's response:
    ```objc
    #import <ResearchKit/ResearchKit.h>
@@ -125,7 +127,7 @@ Once a user has gone through the 23andMe module, the app will return an authoriz
    ```
    Create the 23andMe task's view controller with the following method:
    ```objc
-   ORKTwentyThreeAndMeConnectTaskViewController *ttamTaskVC = 
+   ORKTwentyThreeAndMeConnectTaskViewController *ttamTaskVC =
    [ORKTwentyThreeAndMeConnectTaskViewController twentyThreeAndMeTaskViewControllerWithIdentifier:@"connectWithTTAM"
       allowedUserMode:ORKTwentyThreeAndMeAllowedUserModeExistingAndNew
       studyDependency:ORKTwentyThreeAndMeStudyDependencyRequired
@@ -137,54 +139,54 @@ Once a user has gone through the 23andMe module, the app will return an authoriz
       studyContactEmail:@"my_email@email.com"
       baseURLOverride:nil];
    ```
-   
+
 ####   Parameters:
 
    **allowedUserMode**: Either ```ORKTwentyThreeAndMeAllowedUserModeExistingAndNew``` or ```ORKTwentyThreeAndMeAllowedUserModeExistingOnly```.
-   
+
    **studyDependency**: Either ```ORKTwentyThreeAndMeStudyDependencyRequired``` or ```ORKTwentyThreeAndMeStudyDependencyOptional```.
-   
+
    **authClientId**: 23andMe API OAuth client ID
-   
+
    **authClientSecret**: 23andMe API OAuth client secret
-   
+
    **authScopes**: Space-seperated list of scopes to request from the 23andMe API. See the list of [scopes] for details on what scopes to request.
-   
+
    **investigatorDisplayName**: User-facing investigator name.
-   
+
    **studyDisplayName**: User-facing study name.
-   
+
    **studyContactEmail**: User-facing contact email address.
-   
-   **baseURLOverride**: Either ```nil``` or a URL to ovveride the default 23andMe API URL.
-   
+
+   **baseURLOverride**: Either ```nil``` or a URL to override the default 23andMe API URL.
+
 ####   Set the delegate and present the 23andMe view controller:
    ```objc
    ttamTaskVC.twentyThreeAndMeConnectDelegate = self;
-   
+
    [self presentViewController:ttamTaskVC animated:NO completion:nil];
    ```
 ### 6. Implement the delegate method to receive a response
-   
+
    ```objc
    - (void)twentyThreeAndMeConnectTaskViewController:(ORKTwentyThreeAndMeConnectTaskViewController *)twentyThreeAndMeConnectTaskViewController
                              didFinishWithResults:(NSDictionary *)results
                                             error:(nullable NSError *)error
    ```
    The ```results``` dictionary contains:
-   
+
    **completionType**: If the user successfully auth'd (and, for new 23andMe users, created an account) this will be set to ```success```. Otherwise, this will be set to ```cancelled```.
-   
+
    **authToken**: 23andMe Auth Token for the user's 23andMe profile. Only set if ```completionType == success```.
-   
-   **refreshToken**: 23andMe Refresh Token for the user's 23andMe profile. Only set if ```completionType == success```. 
-   
+
+   **refreshToken**: 23andMe Refresh Token for the user's 23andMe profile. Only set if ```completionType == success```.
+
    On access and refresh tokens:
 >Access tokens expire after 1 day. If you need to access a user's data past that, you can request another token using the last ```refresh_token``` that you were issued. Using the refresh token means you don't have to send the user through the "Accept" screen all over again. Requesting a new token set will invalidate your old ```refresh_token```. Be sure to specify the full scope when requesting a new access token.
 
-#### 7. Use the 23andMe API to retreive user data
-   Once you've retreived an access token, you can use the API to access the information that the user agreed to share with you as it is available. _Access tokens retreived via the 23andMe ResearchKit module are only valid for individual profiles, so be sure to keep track of the profile ID that's associated with the token._
-   
+#### 7. Use the 23andMe API to retrieve user data
+   Once you've retrieved an access token, you can use the API to access the information that the user agreed to share with you as it is available. _Access tokens retrieved via the 23andMe ResearchKit module are only valid for individual profiles, so be sure to keep track of the profile ID that's associated with the token._
+
 ## Questions?
 **Questions about 23andMe, the 23andMe API, or interested in setting up a project with us?** Contact us at researchkit@23andme.com.
 
@@ -194,22 +196,22 @@ Once a user has gone through the 23andMe module, the app will return an authoriz
 The source in the _23andMeResearchKitModule_ repository is made available under the following license unless another license is explicitly identified:
 ```
 Copyright (c) 2016, 23andMe, Inc. All rights reserved.
- 
+
  Redistribution and use in source and binary forms, with or without modification,
  are permitted provided that the following conditions are met:
- 
+
  1.  Redistributions of source code must retain the above copyright notice, this
  list of conditions and the following disclaimer.
- 
+
  2.  Redistributions in binary form must reproduce the above copyright notice,
  this list of conditions and the following disclaimer in the documentation and/or
  other materials provided with the distribution.
- 
+
  3.  Neither the name of the copyright holder(s) nor the names of any contributors
  may be used to endorse or promote products derived from this software without
  specific prior written permission. No license is granted to the trademarks of
  the copyright holders even if such marks are included in this software.
- 
+
  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
  AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
  IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
