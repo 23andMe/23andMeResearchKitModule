@@ -25,6 +25,9 @@ Seamlessly incorporate genetic data collection into your ResearchKit-enabled app
 - Contributing genetic data required
 - Contributing genetic data optional
 
+#### Retreival of genetic data
+The module is designed to make it simple for you to gain permission to access a 23andMe customer's genetic data. While it will provide you with the credentials necessary to access a customer's data, you will need to use the 23andMe API to retreive any genetic inforamtion. **Unless you have a need for the information in your app, we recommend that you not download genomewide data directly to a participant's phone.**
+
 ## Getting Started
 ### Requirements
 - ResearchKit 1.3.0 (has not been tested against other versions)
