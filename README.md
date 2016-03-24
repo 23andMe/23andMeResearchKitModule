@@ -3,7 +3,7 @@
 # 23andMe ResearchKit Module
 Bring genetic data to your ResearchKit-enabled research app with 23andMe.
 
-**Interested? Contact us at researchkit@23andme.com**
+**Interested? Contact us at geneticsmodule@23andme.com**
 
 ## Introduction
 Seamlessly incorporate genetic data collection into your ResearchKit-enabled app. With 23andMe's ResearchKit module you can use 23andMe as a source for collecting genetic data from both existing 23andMe customers as well as other individuals who you'd like to sign up for 23andMe.
@@ -34,7 +34,7 @@ The module is designed to make it simple for you to gain permission to access a 
 - iOS Base SDK 8.0+
 
 ### Contact 23andMe for development environment access
-23andMe has created a development environment for researchers looking to include the 23andMe module in their app. Send an email to researchkit@23andme.com for more information on accessing the development environment.
+23andMe has created a development environment for researchers looking to include the 23andMe module in their app. Send an email to geneticsmodule@23andme.com for more information on accessing the development environment.
 
 If your app will only accept data from existing 23andMe customers, then you may not need access to the development environment. You can create a development API account [here].
 
@@ -161,7 +161,7 @@ Once a user has gone through the 23andMe module, the app will return an authoriz
 
    **studyContactEmail**: User-facing contact email address.
 
-   **baseURLOverride**: Either ```nil``` or a URL to override the default 23andMe API URL. Use this override URL to access the sandbox environment. For access to the sandbox environment, contact us at researchkit@23andme.com
+   **baseURLOverride**: Either ```nil``` or a URL to override the default 23andMe API URL. Use this override URL to access the sandbox environment. For access to the sandbox environment, contact us at geneticsmodule@23andme.com
 
 ####   Set the delegate and present the 23andMe view controller:
    ```objc
@@ -191,7 +191,7 @@ Once a user has gone through the 23andMe module, the app will return an authoriz
    Once you've retrieved an access token, you can use the API to access the information that the user agreed to share with you as it is available. _Access tokens retrieved via the 23andMe ResearchKit module are only valid for individual profiles, so be sure to keep track of the profile ID that's associated with the token._
 
 ## Questions?
-**Questions about 23andMe, the 23andMe API, or interested in setting up a project with us?** Contact us at researchkit@23andme.com.
+**Questions about 23andMe, the 23andMe API, or interested in setting up a project with us?** Contact us at geneticsmodule@23andme.com.
 
 **See something in our code or documentation?** Create an issue on GitHub and we'll take a look.
 
